@@ -1,17 +1,17 @@
 import dados from 'readline-sync'
 
 let listaSalario = [
-    {ano: 2010, salario: 510.00},
-    {ano: 2011, salario: 545.00},
-    {ano: 2012, salario: 622.00},
-    {ano: 2013, salario: 678.00},
-    {ano: 2014, salario: 724.00},
-    {ano: 2015, salario: 788.00},
-    {ano: 2016, salario: 880.00},
-    {ano: 2017, salario: 937.00},
-    {ano: 2018, salario: 954.00},
-    {ano: 2019, salario: 998.00},
-    {ano: 2020, salario: 1045.00}
+    {ano: 2010, salario: 510},
+    {ano: 2011, salario: 545},
+    {ano: 2012, salario: 622},
+    {ano: 2013, salario: 678},
+    {ano: 2014, salario: 724},
+    {ano: 2015, salario: 788},
+    {ano: 2016, salario: 880},
+    {ano: 2017, salario: 937},
+    {ano: 2018, salario: 954},
+    {ano: 2019, salario: 998},
+    {ano: 2020, salario: 1045}
 ]
 
 let listaInflacao = [
@@ -51,6 +51,7 @@ switch (opcao) {
         break;
 
     case '3':
+        comparaSalarioInflacao()
         break;
 
     default:
@@ -59,14 +60,31 @@ switch (opcao) {
 
 function mostraSalario () {
     for (let salario of listaSalario) {
-        console.log(`${label_ano.padEnd(30, ".")} ${salario.ano}`)
-        console.log(`${label_salario.padEnd(30, ".")} ${salario.salario}\n`)
+        console.log(`\n${label_ano.padEnd(30, ".")} ${salario.ano}`)
+        console.log(`${label_salario.padEnd(30, ".")} R$ ${salario.salario.toFixed(2).replace(".",",")}\n`)
     }
 }
 
 function mostraInflacao () {
     for (let inflacao of listaInflacao) {
-        console.log(`${label_ano.padEnd(30, ".")} ${inflacao.ano}`)
-        console.log(`${label_inflacao.padEnd(30, ".")} ${inflacao.inflacao}`)
+        console.log(`\n${label_ano.padEnd(30, ".")} ${inflacao.ano}`)
+        console.log(`${label_inflacao.padEnd(30, ".")} ${inflacao.inflacao.toFixed(2).replace(".",",")}%\n`)
+    }
+}
+
+function comparaSalarioInflacao () {
+    for(let i = 0; i < listaInflacao.length; i++) {
+        let ano = listaSalario[i].ano
+        let salario = listaSalario[i].salario
+        let ipca = listaInflacao[i].inflacao
+
+
+        let diferenca = salario - salarioAnterior
+        let crescimento = (diferenca/salarioAnterior)*100
+
+        // console.log(`\n${label_ano.padEnd(30, ".")} ${ano}`)
+        // console.log(`${label_salario.padEnd(30, ".")} R$ ${salario.toFixed(2).replace(".",",")}`)
+        // console.log("Crescimento Salarial: -")
+        // console.log(`${label_inflacao.padEnd(30, ".")} ${ipca.toFixed(2).replace(".",",")}%`)
     }
 }
