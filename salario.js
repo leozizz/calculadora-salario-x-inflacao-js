@@ -73,18 +73,5 @@ function mostraInflacao () {
 }
 
 function comparaSalarioInflacao () {
-    for(let i = 0; i < listaInflacao.length; i++) {
-        let ano = listaSalario[i].ano
-        let salario = listaSalario[i].salario
-        let ipca = listaInflacao[i].inflacao
 
-
-        let diferenca = salario - salarioAnterior
-        let crescimento = (diferenca/salarioAnterior)*100
-
-        // console.log(`\n${label_ano.padEnd(30, ".")} ${ano}`)
-        // console.log(`${label_salario.padEnd(30, ".")} R$ ${salario.toFixed(2).replace(".",",")}`)
-        // console.log("Crescimento Salarial: -")
-        // console.log(`${label_inflacao.padEnd(30, ".")} ${ipca.toFixed(2).replace(".",",")}%`)
-    }
 }
