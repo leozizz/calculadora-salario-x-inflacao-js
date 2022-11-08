@@ -31,6 +31,7 @@ let listaInflacao = [
 let label_ano = "Ano: "
 let label_salario = "Salario mínimo: "
 let label_inflacao = "Inflação IPCA: "
+let label_crescimento = "Crescimento Salarial: "
 
 let opcao = dados.question(
     `Escolha uma das alternativas:
@@ -73,5 +74,25 @@ function mostraInflacao () {
 }
 
 function comparaSalarioInflacao () {
+    for(let i = 0; i <= listaSalario.length-1; i++){
+        let ano = listaSalario[i].ano
+        let salario = listaSalario[i].salario
+        let inflacao = listaInflacao[i].inflacao
+        let percentualCrescimento
 
+        if (i > 0) {
+            let salarioAnterior = listaSalario[i-1].salario
+            let diferenca = salario - salarioAnterior
+            let crescimento = (diferenca / salarioAnterior) * 100
+            percentualCrescimento = `${crescimento.toFixed(2).replace(".",",")}"%"`
+        } else {
+            percentualCrescimento = "-"
+        }
+
+        console.log(`\n${label_ano.padEnd(30, ".")} ${ano}`)
+        console.log(`${label_salario.padEnd(30, ".")} R$ ${salario.toFixed(2).replace(".",",")}`)
+        console.log(`${label_crescimento.padEnd(30, ".")} ${percentualCrescimento}`)
+        console.log(`${label_inflacao.padEnd(30, ".")} ${inflacao.toFixed(2).replace(".",",")}%\n`)
+    }
 }
+
